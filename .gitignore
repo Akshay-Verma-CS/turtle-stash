@@ -8,6 +8,8 @@ __pycache__/
 .coverage
 htmlcov/
 .DS_Store
+node_modules/
+.next/
 
 # Internal planning/specification docs stay local.
 [0-9][0-9]_*.md

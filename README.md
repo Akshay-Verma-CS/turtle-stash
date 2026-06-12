@@ -118,6 +118,18 @@ curl http://localhost:8000/tenants/{tenant_id} \
 .venv/bin/pytest
 ```
 
+## Website
+
+The static product website lives in `site/`. It is a Next.js export with an interactive Three.js architecture diagram.
+
+```sh
+cd site
+npm install
+npm run build
+```
+
+The exported static files are written to `site/out/`.
+
 ## Project Layout
 
 - `app/api` contains FastAPI routes and dependencies.
@@ -126,6 +138,7 @@ curl http://localhost:8000/tenants/{tenant_id} \
 - `app/models` contains database models.
 - `app/schemas` contains request and response schemas.
 - `migrations` contains Alembic database migrations.
+- `site` contains the static Next.js product website.
 - `tests` contains the pytest suite.
 
 ## Who This Is For
