@@ -1,0 +1,33 @@
+"""create tenants table
+
+Revision ID: 0001_create_tenants
+Revises:
+Create Date: 2026-06-12 00:00:00.000000
+"""
+from collections.abc import Sequence
+from typing import Optional, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+revision: str = "0001_create_tenants"
+down_revision: Optional[str] = None
+branch_labels: Optional[Union[str, Sequence[str]]] = None
+depends_on: Optional[Union[str, Sequence[str]]] = None
+
+
+def upgrade() -> None:
+    op.create_table(
+        "tenants",
+        sa.Column("id", sa.String(length=36), nullable=False),
+        sa.Column("name", sa.String(length=255), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
+        sa.PrimaryKeyConstraint("id"),
+    )
+    op.create_index(op.f("ix_tenants_name"), "tenants", ["name"], unique=True)
+
+
+def downgrade() -> None:
+    op.drop_index(op.f("ix_tenants_name"), table_name="tenants")
+    op.drop_table("tenants")
