@@ -57,7 +57,7 @@ export default function ArchitectureScene() {
     if (!mount) return undefined;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xeaf0ed);
+    scene.background = new THREE.Color(0x071316);
 
     const camera = new THREE.PerspectiveCamera(42, mount.clientWidth / mount.clientHeight, 0.1, 100);
     camera.position.set(0, 0.1, 8.4);
