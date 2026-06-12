@@ -1,31 +1,31 @@
 import ArchitectureScene from "../components/ArchitectureScene";
 
 const capabilities = [
-  "Multi-provider model routing",
-  "Shared external memory",
-  "Grounded answers with evidence",
-  "Read-only database tools",
-  "Tenant isolation and audit logs",
-  "Local embeddings and hybrid retrieval"
+  "Persistent agent memory",
+  "Less repeated context",
+  "Evidence-grounded answers",
+  "Smarter model routing",
+  "Safer database access",
+  "Lower token spend"
 ];
 
 const architecture = [
-  ["API Layer", "Authenticates requests, resolves tenants, validates payloads, and exposes agent, memory, provider, and connector APIs."],
-  ["Agent Orchestrator", "Coordinates each run: retrieve context, route model, execute allowed tools, checkpoint progress, and verify output."],
-  ["Model Router", "Chooses a model using complexity, cost, latency, capabilities, context size, provider health, and fallback rules."],
-  ["Tool Registry", "Makes every external action typed, permission-checked, timed, limited, and audited before execution."],
-  ["Memory Service", "Stores versioned memory chunks, creates embeddings, runs keyword/vector search, deduplicates, and packs evidence."],
-  ["Database Connectors", "Provide safe read-only access to PostgreSQL, MySQL, and MongoDB with timeouts and result limits."],
-  ["Provider Adapters", "Keep Claude, OpenAI-compatible, Codex-compatible, and future provider details behind common interfaces."]
+  ["Shared Memory", "Agents store durable project decisions, user preferences, tool results, summaries, and verified facts once, then retrieve them whenever needed."],
+  ["Retrieval Layer", "Hybrid search finds only the most relevant memory chunks, so agents stop dragging huge repeated prompts into every run."],
+  ["Agent Orchestrator", "Each run can retrieve memory, choose a model, call approved tools, write useful new context, and return an evidence-backed answer."],
+  ["Model Router", "Simple jobs go to cheaper models, while coding, planning, debugging, and architecture tasks can use stronger models when needed."],
+  ["Tool Registry", "Database queries and external actions pass through typed permissions, timeouts, result limits, redaction, and audit logs."],
+  ["Database Connectors", "Agents can answer from approved PostgreSQL, MySQL, and MongoDB data without getting unrestricted write access."],
+  ["Provider Adapters", "Teams can use Claude, OpenAI-compatible, Codex-compatible, and future providers without rewriting agent logic."]
 ];
 
 const roadmap = [
-  ["Provider management", "Encrypted token storage, rotation, health checks, and adapter placeholders."],
-  ["Model catalog and routing", "Model metadata, task complexity scoring, cost estimation, and fallback chains."],
-  ["Agent runtime", "Agent configs, run states, checkpoints, model calls, and execution limits."],
-  ["Database connectors", "PostgreSQL, MySQL, and MongoDB read-only tools with schema discovery and query safety."],
-  ["Shared memory", "Memory spaces, chunks, local embeddings, pgvector, full-text search, reranking, and retention."],
-  ["Grounded execution", "Evidence-first answers, citations, insufficient-evidence responses, and claim verification."]
+  ["Shared memory spaces", "Project, user, tenant, document, and private agent memory with access controls and retention policies."],
+  ["Hybrid retrieval", "Local embeddings plus keyword search, reranking, deduplication, and token-budgeted evidence packs."],
+  ["Cost-aware routing", "Choose cheaper models for routine work and stronger models only when the task requires deeper reasoning."],
+  ["Safe database tools", "Read-only query execution, schema discovery, result limits, and blocked destructive operations."],
+  ["Grounded agent runs", "Answers cite memory, database rows, tool results, or documents instead of relying on unsupported guesses."],
+  ["Verification loop", "Important answers are checked for unsupported claims before they reach the user."]
 ];
 
 const steps = [
@@ -52,11 +52,11 @@ export default function Home() {
         <ArchitectureScene />
 
         <div className="hero-content">
-          <p className="eyebrow">AI Agent Service Foundation</p>
+          <p className="eyebrow">Shared Memory For AI Agents</p>
           <h1>Turtle Stash</h1>
           <p className="hero-copy">
-            A secure backend layer for AI agents that need model routing, shared memory, safe database access,
-            evidence-grounded answers, and auditability.
+            A memory and routing layer where AI agents keep durable context, reuse knowledge across runs,
+            choose the right model, and answer from evidence instead of starting from zero every time.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#docs">Start building</a>
@@ -74,17 +74,18 @@ export default function Home() {
       <section className="section intro">
         <div className="section-heading">
           <p className="eyebrow">Why It Exists</p>
-          <h2>Production AI agents need more than a prompt and a model key.</h2>
+          <h2>Today’s AI agents are powerful, but they forget too much.</h2>
         </div>
         <div className="text-grid">
           <p>
-            Turtle Stash is built for teams that want agents to remember project context, query trusted data,
-            choose the right model for the task, and explain what evidence shaped an answer.
+            Most agents work by stuffing the current chat, a few files, and tool outputs into a model context window.
+            When the run ends, useful knowledge is scattered in logs or lost. The next agent repeats discovery,
+            burns tokens, and may reach a different conclusion.
           </p>
           <p>
-            The current repo is the backend foundation: FastAPI, PostgreSQL, migrations, tenant APIs, API-key
-            authentication, structured logs, Docker Compose, and tests. The architecture is intentionally modular
-            so provider adapters, memory retrieval, database tools, and agent runtimes can land cleanly.
+            Turtle Stash turns memory into shared infrastructure. Agents can store what matters, retrieve only the
+            relevant pieces, cite the evidence, and pass context safely between research, coding, support, analytics,
+            and automation workflows.
           </p>
         </div>
       </section>
@@ -92,7 +93,7 @@ export default function Home() {
       <section className="section architecture" id="architecture">
         <div className="section-heading">
           <p className="eyebrow">High-Level Architecture</p>
-          <h2>A modular backend for routing, tools, memory, and evidence.</h2>
+          <h2>One memory layer, many specialized agents.</h2>
         </div>
         <div className="architecture-grid">
           {architecture.map(([title, body]) => (
@@ -107,7 +108,7 @@ export default function Home() {
       <section className="section docs" id="docs">
         <div className="section-heading">
           <p className="eyebrow">Use The App</p>
-          <h2>Run the backend locally in minutes.</h2>
+          <h2>Run the first building block locally.</h2>
         </div>
         <div className="docs-layout">
           <div className="terminal" aria-label="Quickstart commands">
@@ -118,8 +119,8 @@ export default function Home() {
           <div className="docs-copy">
             <h3>Current API surface</h3>
             <p>
-              Phase one exposes a health check and tenant management endpoints. Use `X-API-Key` for protected
-              routes and configure the key with the `API_KEY` environment variable.
+              This repository starts with the secure service base. The final product grows from here into shared
+              memory spaces, retrieval APIs, provider routing, database tools, and grounded agent runs.
             </p>
             <pre>{`GET  /health
 POST /tenants
@@ -134,7 +135,7 @@ GET  /tenants/{tenant_id}`}</pre>
       <section className="section roadmap" id="roadmap">
         <div className="section-heading">
           <p className="eyebrow">Upcoming Features</p>
-          <h2>The path from backend foundation to agent infrastructure.</h2>
+          <h2>What Turtle Stash can unlock.</h2>
         </div>
         <div className="timeline">
           {roadmap.map(([title, body], index) => (
@@ -152,17 +153,17 @@ GET  /tenants/{tenant_id}`}</pre>
       <section className="section contribute" id="contribute">
         <div className="section-heading">
           <p className="eyebrow">Contribute</p>
-          <h2>Help shape a safer open agent backend.</h2>
+          <h2>Help build the memory layer agents are missing.</h2>
         </div>
         <div className="contribute-grid">
           <article>
             <h3>Good first areas</h3>
             <ul>
-              <li>Improve FastAPI route coverage and integration tests.</li>
-              <li>Add provider adapter interfaces and mocks.</li>
-              <li>Prototype model routing metadata and scoring.</li>
-              <li>Design read-only connector validators for SQL and MongoDB.</li>
-              <li>Document safe deployment patterns.</li>
+              <li>Design memory-space APIs for projects, users, documents, and agents.</li>
+              <li>Prototype hybrid search with local embeddings and keyword retrieval.</li>
+              <li>Add model routing policies that estimate cost, latency, and reasoning need.</li>
+              <li>Build safe read-only database connector validators.</li>
+              <li>Document real agent workflows that improve with shared memory.</li>
             </ul>
           </article>
           <article>

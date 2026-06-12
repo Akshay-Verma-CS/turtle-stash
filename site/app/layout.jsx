@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Turtle Stash | AI Agent Service Foundation",
+  title: "Turtle Stash | Shared Memory for AI Agents",
   description:
-    "A secure backend foundation for multi-provider AI agents, model routing, shared memory, safe database tools, and grounded answers."
+    "A shared memory and routing layer for AI agents that need persistent context, grounded answers, safer tools, and lower model costs."
 };
 
 export default function RootLayout({ children }) {
