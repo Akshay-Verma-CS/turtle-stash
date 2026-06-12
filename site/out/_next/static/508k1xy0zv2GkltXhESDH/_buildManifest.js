@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/turtle-stash//_next/:path+",
+        "destination": "/turtle-stash/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
